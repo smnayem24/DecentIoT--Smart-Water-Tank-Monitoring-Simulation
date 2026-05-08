@@ -1,4 +1,4 @@
-# DecentIoT — Smart Water Tank Controller
+# DecentIoT-Smart-Water-Tank-Monitoring-Simulation
 
 Single-node firmware for an **ESP32** that reads tank water level with an **HC-SR04** ultrasonic sensor, publishes level to **[DecentIoT](https://docs.decentiot.cloud)** over MQTT, and controls a **simulated pump** (servo) plus **status LEDs**. Designed for coursework, labs, and Wokwi simulation.
 
