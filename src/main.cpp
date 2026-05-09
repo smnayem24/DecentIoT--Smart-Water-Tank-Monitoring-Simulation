@@ -154,7 +154,7 @@ DECENTIOT_SEND(P0, 1000) {
     Serial.printf("[P0] Published level = %.1f %%\n", latestFillPercent);
   }
 
-  DecentIoT.publishStatus(motorRunning ? "motor_on" : "motor_off");
+  DecentIoT.write(P1, motorRunning ? 1 : 0);
   DecentIoT.write(P2, autoModeEnabled ? 1 : 0);
 }
 
