@@ -153,9 +153,6 @@ DECENTIOT_SEND(P0, 1000) {
     DecentIoT.write(P0, latestFillPercent);
     Serial.printf("[P0] Published level = %.1f %%\n", latestFillPercent);
   }
-
-  DecentIoT.write(P1, motorRunning ? 1 : 0);
-  DecentIoT.write(P2, autoModeEnabled ? 1 : 0);
 }
 
 void connectWiFi() {
