@@ -3,90 +3,91 @@
   "author": "MD Jannatul Nayem",
   "editor": "wokwi",
   "parts": [
-    {
-      "type": "wokwi-text",
-      "id": "text1",
-      "top": -316.8,
-      "left": 585.6,
-      "attrs": {
-        "text": "DecentIoT- Smart Water Tank Controller\n---------------------- Simulation ----------------------"
-      }
-    },
-    { "type": "board-esp32-devkit-c-v4", "id": "esp1", "top": -57.6, "left": 638.44, "attrs": {} },
-    { "type": "wokwi-led", "id": "led1", "top": 6, "left": 522.2, "attrs": { "color": "green" } },
-    {
-      "type": "wokwi-led",
-      "id": "led2",
-      "top": 6,
-      "left": 474.2,
-      "attrs": { "color": "red", "flip": "" }
-    },
-    {
-      "type": "wokwi-servo",
-      "id": "servo1",
-      "top": -29.8,
-      "left": 817.8,
-      "rotate": 270,
-      "attrs": { "horn": "cross", "hornColor": "red" }
-    },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
     {
       "type": "wokwi-resistor",
       "id": "r1",
-      "top": 71.15,
-      "left": 556.8,
+      "top": 119.15,
+      "left": -76.8,
       "attrs": { "value": "1000" }
     },
     {
       "type": "wokwi-resistor",
       "id": "r2",
-      "top": 90.35,
-      "left": 556.8,
+      "top": 138.35,
+      "left": -76.8,
       "attrs": { "value": "1000" }
     },
     {
-      "type": "wokwi-hc-sr04",
-      "id": "ultrasonic2",
-      "top": -180.9,
-      "left": 427.9,
-      "attrs": { "distance": "306" }
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 73.2,
+      "left": -111.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 73.2,
+      "left": -149.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -10.6,
+      "left": 174.6,
+      "rotate": 270,
+      "attrs": { "horn": "cross" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -113.7, "left": -253.7, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -144,
+      "left": -230.4,
+      "attrs": { "text": "Ultrasonic Sensor" }
     },
     {
       "type": "wokwi-text",
       "id": "text2",
-      "top": 115.2,
-      "left": 480,
+      "top": 163.2,
+      "left": -144,
       "attrs": { "text": "LED Indicator" }
     },
     {
       "type": "wokwi-text",
-      "id": "text4",
-      "top": -153.6,
-      "left": 336,
-      "rotate": 270,
-      "attrs": { "text": "Sensor In Water Tank" }
+      "id": "text3",
+      "top": -76.8,
+      "left": 220.8,
+      "attrs": { "text": "Water Pump" }
     },
     {
       "type": "wokwi-text",
-      "id": "text5",
-      "top": -96,
-      "left": 864,
-      "attrs": { "text": "Water Pump" }
+      "id": "text4",
+      "top": -230.4,
+      "left": -76.8,
+      "attrs": {
+        "text": "DecentIoT- Smart Water Tank Controller\n---------------------- Simulation ----------------------"
+      }
     }
   ],
   "connections": [
-    [ "r1:1", "led1:A", "green", [ "v0", "h-19.2" ] ],
-    [ "led2:A", "r2:1", "green", [ "v0" ] ],
-    [ "esp1:GND.1", "led1:C", "black", [ "h-19.05", "v9.6", "h-86.8" ] ],
-    [ "led2:C", "esp1:GND.1", "black", [ "v57.6", "h134.8", "v-9.6" ] ],
-    [ "esp1:GND.3", "servo1:GND", "black", [ "h57.6", "v96", "h105.6" ] ],
-    [ "esp1:5V", "servo1:V+", "red", [ "h-19.05", "v19.2", "h278.4", "v-38.4" ] ],
-    [ "esp1:18", "servo1:PWM", "green", [ "h48", "v86.4", "h76.8" ] ],
-    [ "r2:2", "esp1:12", "green", [ "v0" ] ],
-    [ "r1:2", "esp1:14", "green", [ "v0" ] ],
-    [ "ultrasonic2:ECHO", "esp1:34", "green", [ "v67.2", "h114.4", "v28.8" ] ],
-    [ "ultrasonic2:TRIG", "esp1:33", "green", [ "v76.8", "h114.8", "v48" ] ],
-    [ "ultrasonic2:VCC", "esp1:3V3", "red", [ "v0" ] ],
-    [ "ultrasonic2:GND", "esp1:GND.3", "black", [ "v0", "h267.6", "v115.2" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "r1:1", "led1:A", "green", [ "v0.07", "h-10" ] ],
+    [ "r2:1", "led2:A", "green", [ "h-48", "v-28.8" ] ],
+    [ "esp:GND.1", "led2:C", "black", [ "h0" ] ],
+    [ "esp:GND.1", "led1:C", "black", [ "h0" ] ],
+    [ "ultrasonic1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "r2:2", "esp:12", "green", [ "v0" ] ],
+    [ "r1:2", "esp:14", "green", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "esp:33", "green", [ "v86.4", "h153.2", "v28.8" ] ],
+    [ "ultrasonic1:ECHO", "esp:34", "green", [ "v76.8", "h152.8", "v9.6" ] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "v9.6", "h258", "v38.4" ] ],
+    [ "servo1:V+", "esp:5V", "red", [ "v86.4", "h-278.3", "v-19.2" ] ],
+    [ "servo1:GND", "esp:GND.3", "black", [ "v9.6", "h-134.4", "v-57.6" ] ],
+    [ "servo1:PWM", "esp:18", "green", [ "v19.2", "h-163", "v-48" ] ]
   ],
   "dependencies": {}
 }

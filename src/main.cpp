@@ -172,6 +172,7 @@ void connectWiFi() {
 void setup() {
   Serial.begin(115200);
   delay(300);
+  Serial.println("\n--- Initializing DecentIoT Motor Controller ---");
 
   pinMode(ULTRASONIC_TRIG_PIN, OUTPUT);
   pinMode(ULTRASONIC_ECHO_PIN, INPUT);
